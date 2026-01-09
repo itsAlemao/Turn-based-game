@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://ddxaej3eyc07"]
+
+[ext_resource type="Script" uid="uid://bvgdo62rr7pcn" path="res://scripts/action_control.gd" id="1_ksdpt"]
+[ext_resource type="PackedScene" uid="uid://evuxcb4gfbfp" path="res://scenes/action_option.tscn" id="3_qqh25"]
+[ext_resource type="Texture2D" uid="uid://y8w05qg7upuf" path="res://assets/sprites/strumentiIcon.png" id="4_no7gk"]
+[ext_resource type="Texture2D" uid="uid://c6mx67ot0w6ko" path="res://assets/sprites/attackIcon.png" id="4_qqh25"]
+[ext_resource type="Texture2D" uid="uid://hdagnbt15mtu" path="res://assets/sprites/ManaPotion.png" id="5_no7gk"]
+
+[node name="ActionControl" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ksdpt")
+
+[node name="BaseAction" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 550.0
+offset_bottom = 300.0
+theme_override_constants/separation = 0
+
+[node name="AttackAction" parent="BaseAction" instance=ExtResource("3_qqh25")]
+layout_mode = 2
+icon = ExtResource("4_qqh25")
+option_name = "Attack"
+
+[node name="StrumentiAction" parent="BaseAction" instance=ExtResource("3_qqh25")]
+layout_mode = 2
+icon = ExtResource("4_no7gk")
+option_name = "Items"
+
+[node name="SpecificAction" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 550.0
+offset_right = 1100.0
+offset_bottom = 300.0
+theme_override_constants/separation = 0
+
+[node name="ActionOption" parent="SpecificAction" instance=ExtResource("3_qqh25")]
+layout_mode = 2
+icon = ExtResource("5_no7gk")
+option_name = "Special attack"

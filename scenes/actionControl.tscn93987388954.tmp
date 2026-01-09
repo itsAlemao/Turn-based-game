@@ -1,0 +1,93 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddxaej3eyc07"]
+
+[ext_resource type="Script" uid="uid://da8fbqxsy3viw" path="res://actionSelect.gd" id="1_ksdpt"]
+[ext_resource type="PackedScene" uid="uid://cx6e33rrjwx5c" path="res://scenes/option.tscn" id="3_3gbnu"]
+[ext_resource type="PackedScene" uid="uid://evuxcb4gfbfp" path="res://scenes/action_option.tscn" id="3_qqh25"]
+
+[sub_resource type="GDScript" id="GDScript_4u85i"]
+script/source = "extends Control
+class_name ActionOption2
+
+@export var icon: Texture2D
+@export var option_name: String
+
+@export_group(\"Action\")
+
+enum ActionType{
+	DO_SOMETHING,
+	SHOW_MORE_ACTIONS
+}
+
+@export var action_type: ActionType = ActionType.SHOW_MORE_ACTIONS
+@export_range(0,100) var mana_cost: int
+@export var actions_shown: Array[ActionOption]
+@onready var selected: bool = false
+@onready var activated: bool = false
+
+@onready var action_icon_node: TextureRect = $HBoxContainer/ActionIcon
+@onready var name_node: Label = $HBoxContainer/Name
+@onready var mana_cost_node: Label = $HBoxContainer/ManaCost
+@onready var mana_icon: TextureRect = $HBoxContainer/manaIcon
+@onready var mana_icon_placeholder: VSeparator = $HBoxContainer/VSeparator
+@onready var background: ColorRect = $Background
+
+func _ready() -> void:
+	name_node.text = option_name
+	action_icon_node.texture = icon
+
+	if (action_type == 0):
+		if (mana_cost == 0):
+			mana_icon.hide()
+			mana_icon_placeholder.hide()
+			mana_cost_node.text = \"Free\"
+		else:
+			mana_icon.show()
+			mana_icon_placeholder.hide()
+			mana_cost_node.text = str(mana_cost)
+	else: # not a real action, it will show more actions
+		mana_cost_node.hide()
+		mana_icon.hide()
+		mana_icon_placeholder.hide()
+		
+func setSelected():
+	background.color = Utils.Action.COLOR_SELECTED
+	
+func setActive():
+	background.color = Utils.Action.COLOR_ACTIVATED
+
+func setDefault():
+	background.color = Utils.Action.COLOR_DEFAULT
+"
+
+[node name="ActionControl" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ksdpt")
+
+[node name="BaseAction" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 550.0
+offset_bottom = 300.0
+theme_override_constants/separation = 0
+
+[node name="AttackOption" parent="BaseAction" instance=ExtResource("3_3gbnu")]
+layout_mode = 2
+script = SubResource("GDScript_4u85i")
+
+[node name="StrumentiOption" parent="BaseAction" instance=ExtResource("3_3gbnu")]
+layout_mode = 2
+script = SubResource("GDScript_4u85i")
+
+[node name="SpecificAction" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 550.0
+offset_right = 1100.0
+offset_bottom = 300.0
+theme_override_constants/separation = 0
+
+[node name="ActionOption2" parent="SpecificAction" instance=ExtResource("3_qqh25")]
+layout_mode = 2

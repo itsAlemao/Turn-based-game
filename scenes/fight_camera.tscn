@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://di3ndunm3hgad"]
+
+[ext_resource type="Script" uid="uid://dfp5ls36b4sd" path="res://scripts/fight_camera.gd" id="1_ltvyb"]
+
+[node name="FightCamera" type="Camera2D"]
+script = ExtResource("1_ltvyb")

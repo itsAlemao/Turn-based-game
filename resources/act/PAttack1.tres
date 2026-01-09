@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PlayerAttack" load_steps=3 format=3 uid="uid://dituchk0e3l5p"]
+
+[ext_resource type="Script" uid="uid://bpumciuhrg8sm" path="res://scripts/models/PlayerAttackDTO.gd" id="1_b43pi"]
+[ext_resource type="Texture2D" uid="uid://c6mx67ot0w6ko" path="res://assets/sprites/attackIcon.png" id="1_vxwnb"]
+
+[resource]
+script = ExtResource("1_b43pi")
+Name = "luiii"
+ManaCost = 32
+icon = ExtResource("1_vxwnb")
+Damage = 4
+metadata/_custom_type_script = "uid://bpumciuhrg8sm"

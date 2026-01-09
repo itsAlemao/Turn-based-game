@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="EnemyAttackDTO" load_steps=2 format=3 uid="uid://dh4f33kb1ypda"]
+
+[ext_resource type="Script" uid="uid://bidb6wwckjdm1" path="res://scripts/models/EnemyAttackDTO.gd" id="1_w2vph"]
+
+[resource]
+script = ExtResource("1_w2vph")
+metadata/_custom_type_script = "uid://bidb6wwckjdm1"

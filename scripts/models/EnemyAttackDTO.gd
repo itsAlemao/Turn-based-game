@@ -1,0 +1,2 @@
+extends AttackBase
+class_name EnemyAttackDTO

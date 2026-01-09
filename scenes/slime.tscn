@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://dakj23hmickya"]
+
+[ext_resource type="Texture2D" uid="uid://dmehf5oej4oaa" path="res://assets/sprites/slimeGreenIdle-Sheet.png" id="1_5uhve"]
+[ext_resource type="Script" uid="uid://ce0vvpmekre1g" path="res://scripts/slime.gd" id="2_p2gj0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igwkv"]
+atlas = ExtResource("1_5uhve")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88bpn"]
+atlas = ExtResource("1_5uhve")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iahhx"]
+atlas = ExtResource("1_5uhve")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ighys"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igwkv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88bpn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iahhx")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 7.0
+}]
+
+[node name="Slime" type="AnimatedSprite2D" groups=["enemies"]]
+sprite_frames = SubResource("SpriteFrames_ighys")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.4050188
+script = ExtResource("2_p2gj0")

@@ -1,0 +1,120 @@
+[gd_scene load_steps=5 format=3 uid="uid://evuxcb4gfbfp"]
+
+[ext_resource type="Texture2D" uid="uid://c6mx67ot0w6ko" path="res://assets/sprites/attackIcon.png" id="1_eli1j"]
+[ext_resource type="Texture2D" uid="uid://ba8pd0aifpt7c" path="res://assets/sprites/manaIcon.png" id="2_g40q3"]
+
+[sub_resource type="GDScript" id="GDScript_4u85i"]
+script/source = "extends Control
+class_name ActionOption2
+
+@export var icon: Texture2D
+@export var option_name: String
+
+@export_group(\"Action\")
+
+enum ActionType{
+	DO_SOMETHING,
+	SHOW_MORE_ACTIONS
+}
+
+@export var action_type: ActionType = ActionType.SHOW_MORE_ACTIONS
+@export_range(0,100) var mana_cost: int
+@export var actions_shown: Array[ActionOption]
+@onready var selected: bool = false
+@onready var activated: bool = false
+
+@onready var action_icon_node: TextureRect = $HBoxContainer/ActionIcon
+@onready var name_node: Label = $HBoxContainer/Name
+@onready var mana_cost_node: Label = $HBoxContainer/ManaCost
+@onready var mana_icon: TextureRect = $HBoxContainer/manaIcon
+@onready var mana_icon_placeholder: VSeparator = $HBoxContainer/VSeparator
+@onready var background: ColorRect = $Background
+
+func _ready() -> void:
+	name_node.text = option_name
+	action_icon_node.texture = icon
+
+	if (action_type == 0):
+		if (mana_cost == 0):
+			mana_icon.hide()
+			mana_icon_placeholder.hide()
+			mana_cost_node.text = \"Free\"
+		else:
+			mana_icon.show()
+			mana_icon_placeholder.hide()
+			mana_cost_node.text = str(mana_cost)
+	else: # not a real action, it will show more actions
+		mana_cost_node.hide()
+		mana_icon.hide()
+		mana_icon_placeholder.hide()
+		
+func setSelected():
+	background.color = Utils.Action.COLOR_SELECTED
+	
+func setActive():
+	background.color = Utils.Action.COLOR_ACTIVATED
+
+func setDefault():
+	background.color = Utils.Action.COLOR_DEFAULT
+"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bllqc"]
+
+[node name="ActionOption" type="Control"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1370.0
+offset_bottom = -980.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_4u85i")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.54, 0.48852003, 0.4212, 0.49803922)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 550.0
+offset_bottom = 100.0
+
+[node name="ActionIcon" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("1_eli1j")
+stretch_mode = 1
+
+[node name="Name" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0, 0.7900774, 0.7900771, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 4.954765, 1)
+theme_override_font_sizes/font_size = 25
+text = "nome quiii"
+
+[node name="ManaCost" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_colors/font_color = Color(0, 0.7900774, 0.7900771, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 4.954765, 1)
+theme_override_font_sizes/font_size = 25
+text = "23"
+
+[node name="manaIcon" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("2_g40q3")
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 60
+theme_override_styles/separator = SubResource("StyleBoxEmpty_bllqc")

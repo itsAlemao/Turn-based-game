@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://u0iqskh05rc6"]
+
+[ext_resource type="PackedScene" uid="uid://6timmj68hnxr" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://c62mxyh4fctwm" path="res://scripts/game.gd" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://di3ndunm3hgad" path="res://scenes/fight_camera.tscn" id="2_iywne"]
+[ext_resource type="PackedScene" uid="uid://dakj23hmickya" path="res://scenes/slime.tscn" id="4_iywne"]
+[ext_resource type="Resource" uid="uid://ojiijbw5dq6d" path="res://resources/enemies/slime.tres" id="4_p57ef"]
+
+[node name="Fight" type="Node2D"]
+script = ExtResource("1_yqjtg")
+
+[node name="FightCamera" parent="." instance=ExtResource("2_iywne")]
+
+[node name="Characters" type="Node" parent="."]
+
+[node name="Players" type="Node" parent="Characters"]
+
+[node name="Player" parent="Characters/Players" instance=ExtResource("1_uwrxv")]
+position = Vector2(-388, 198)
+scale = Vector2(4, 4)
+
+[node name="Player2" parent="Characters/Players" instance=ExtResource("1_uwrxv")]
+position = Vector2(-388, 198)
+scale = Vector2(4, 4)
+
+[node name="Enemies" type="Node" parent="Characters"]
+
+[node name="Slime2" parent="Characters/Enemies" instance=ExtResource("4_iywne")]
+position = Vector2(267, 202)
+scale = Vector2(4, 4)
+enemy = ExtResource("4_p57ef")
+
+[node name="Slime3" parent="Characters/Enemies" instance=ExtResource("4_iywne")]
+position = Vector2(451, 364)
+scale = Vector2(4, 4)
+enemy = ExtResource("4_p57ef")

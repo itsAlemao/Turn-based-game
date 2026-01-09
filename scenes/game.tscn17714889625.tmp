@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://u0iqskh05rc6"]
+
+[ext_resource type="PackedScene" uid="uid://6timmj68hnxr" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://c62mxyh4fctwm" path="res://scripts/game.gd" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://dakj23hmickya" path="res://scenes/slime.tscn" id="4_iywne"]
+[ext_resource type="PackedScene" uid="uid://ddxaej3eyc07" path="res://scenes/actionControl.tscn" id="4_lbhrr"]
+
+[node name="Fight" type="Node2D"]
+script = ExtResource("1_yqjtg")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Characters" type="Node" parent="."]
+
+[node name="Players" type="Node" parent="Characters"]
+
+[node name="Player" parent="Characters/Players" instance=ExtResource("1_uwrxv")]
+position = Vector2(-436, 48)
+scale = Vector2(4, 4)
+
+[node name="Enemies" type="Node" parent="Characters"]
+
+[node name="Slime" parent="Characters/Enemies" instance=ExtResource("4_iywne")]
+position = Vector2(377, 49)
+scale = Vector2(4, 4)
+
+[node name="ActionControl" parent="." instance=ExtResource("4_lbhrr")]
+visible = false
+offset_left = -614.0
+offset_top = -332.0
+offset_right = -614.0
+offset_bottom = -332.0

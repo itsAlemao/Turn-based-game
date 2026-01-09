@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bssbyxnfqbsrm"]
+
+[ext_resource type="Texture2D" uid="uid://dh3divi7musll" path="res://assets/sprites/arrow.png" id="1_im50l"]
+[ext_resource type="Script" uid="uid://b3grldjf7lwi" path="res://scripts/target_indicator.gd" id="2_fscy5"]
+
+[node name="TargetIndicator" type="Sprite2D"]
+texture = ExtResource("1_im50l")
+region_enabled = true
+region_rect = Rect2(5, 3, 16, 21)
+script = ExtResource("2_fscy5")

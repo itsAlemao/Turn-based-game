@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://evuxcb4gfbfp"]
+
+[ext_resource type="Texture2D" uid="uid://c6mx67ot0w6ko" path="res://assets/sprites/attackIcon.png" id="1_eli1j"]
+[ext_resource type="Script" uid="uid://bhw4ghbafsknn" path="res://scripts/action_option.tres.gd" id="1_g40q3"]
+[ext_resource type="Texture2D" uid="uid://ba8pd0aifpt7c" path="res://assets/sprites/manaIcon.png" id="2_g40q3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bllqc"]
+
+[node name="ActionOption" type="Control"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1370.0
+offset_bottom = -980.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g40q3")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 550.0
+offset_bottom = 100.0
+
+[node name="ActionIcon" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("1_eli1j")
+stretch_mode = 1
+
+[node name="Name" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0, 0.7900774, 0.7900771, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 4.954765, 1)
+theme_override_font_sizes/font_size = 25
+text = "nome quiii"
+
+[node name="ManaCost" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_colors/font_color = Color(0, 0.7900774, 0.7900771, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 4.954765, 1)
+theme_override_font_sizes/font_size = 25
+text = "23"
+
+[node name="ManaCost" type="Label" parent="HBoxContainer/ManaCost"]
+layout_mode = 0
+size_flags_horizontal = 10
+theme_override_colors/font_color = Color(0, 0.7900774, 0.7900771, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 4.954765, 1)
+theme_override_font_sizes/font_size = 25
+text = "23"
+
+[node name="manaIcon" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("2_g40q3")
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 60
+theme_override_styles/separator = SubResource("StyleBoxEmpty_bllqc")

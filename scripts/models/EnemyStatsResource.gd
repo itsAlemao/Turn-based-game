@@ -1,0 +1,2 @@
+extends StatsBase
+class_name EnemyStatsResource
