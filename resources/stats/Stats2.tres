@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PlayerStats" load_steps=2 format=3 uid="uid://bklgl30w6ec6m"]
+
+[ext_resource type="Script" uid="uid://bpga1chf7osia" path="res://scripts/models/PlayerStatsDTO.gd" id="1_euvnt"]
+
+[resource]
+script = ExtResource("1_euvnt")
+MaxMana = 10
+CurMana = 10
+MaxHealth = 10
+CurHealth = 10
+Attack = 5
+Defense = 5
+Speed = 5
+metadata/_custom_type_script = "uid://bpga1chf7osia"

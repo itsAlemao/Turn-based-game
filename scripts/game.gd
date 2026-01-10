@@ -264,13 +264,13 @@ func _add_bar(player_node: PlayerNode):
 	var bar_node: HealthBarNode = healthBarScene.instantiate()
 	bar_node.scale = Vector2(4,4)
 	bar_node.set_max_health(player_node.characterResource().stats().MaxHealth)
-	player_node.characterResource().stats().health_changed.connect(func(new, old): bar_node.take_damage(new-old))
+	player_node.characterResource().stats().health_changed.connect(func(new, old): bar_node.take_damage(old-new))
 	camera.add_bar(bar_node)
-	
+
 
 class ChPos:
 	var pos: Vector2
-	var spacial_idx
+	var spacial_idx: int
 	var ch: CharacterNode
 	func _init(pos_: Vector2, spacial_idx_: int, ch_ : CharacterNode = null) -> void:
 		pos = pos_

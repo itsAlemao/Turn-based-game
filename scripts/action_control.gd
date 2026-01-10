@@ -9,7 +9,6 @@ signal action_decided(att: PlayerAttack)
 @onready var strumenti_action: Control = $BaseAction/StrumentiAction
 
 var optionScene = preload("res://scenes/action_option.tscn")
-var abc = load("res://resources/act/PAttack1.tres")
 
 # dati per gestire la selezione
 var _base_index: int = 0

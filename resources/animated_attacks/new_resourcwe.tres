@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AnimatedAttackBase" load_steps=2 format=3 uid="uid://bjl27klftj4jx"]
+
+[ext_resource type="Script" uid="uid://djcx28h2cskpf" path="res://scripts/models/AnimatedAttackBase.gd" id="1_8nj6h"]
+
+[resource]
+script = ExtResource("1_8nj6h")
+ranged_attack = null
+hit_frame = null
+metadata/_custom_type_script = "uid://djcx28h2cskpf"

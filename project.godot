@@ -28,6 +28,15 @@ window/size/viewport_height=1080
 
 project/assembly_name="TurnBasedGame"
 
+[file_customization]
+
+folder_colors={
+"res://assets/": "green",
+"res://resources/": "purple",
+"res://scenes/": "yellow",
+"res://scripts/": "red"
+}
+
 [gui]
 
 theme/default_font_multichannel_signed_distance_field=true

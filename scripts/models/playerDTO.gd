@@ -1,7 +1,7 @@
 class_name Player extends Character
 
 ## Player's attacks
-@export var Attacks: Array[PlayerAttack]
+@export var Attacks: Array[AnimatedAttack]
 
 ## Player's stats
 @export var Stats: PlayerStats

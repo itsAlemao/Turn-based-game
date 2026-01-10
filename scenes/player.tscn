@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://6timmj68hnxr"]
 
 [ext_resource type="Texture2D" uid="uid://qgae6fh21jft" path="res://assets/sprites/pg walking.png" id="1_4flbx"]
-[ext_resource type="Script" uid="uid://duqux6jf37gol" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://duqux6jf37gol" path="res://scripts/models/player.gd" id="1_g2els"]
 [ext_resource type="Resource" uid="uid://li73vb8hor3o" path="res://resources/players/Player1.tres" id="3_qhqgy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]

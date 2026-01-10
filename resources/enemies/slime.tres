@@ -1,13 +1,12 @@
-[gd_resource type="Resource" script_class="EnemyDTO" load_steps=5 format=3 uid="uid://ojiijbw5dq6d"]
+[gd_resource type="Resource" script_class="EnemyDTO" load_steps=4 format=3 uid="uid://ojiijbw5dq6d"]
 
 [ext_resource type="Script" uid="uid://ds508ydwkmj35" path="res://scripts/models/EnemyDTO.gd" id="1_6pnpc"]
-[ext_resource type="Script" uid="uid://cikqulghyh2tk" path="res://scripts/models/AttackBaseDTO.gd" id="1_pssbi"]
-[ext_resource type="Resource" uid="uid://dh4f33kb1ypda" path="res://resources/act/EAttack1.tres" id="2_k071p"]
+[ext_resource type="Resource" uid="uid://dh4f33kb1ypda" path="res://resources/attacks/EAttack1.tres" id="2_k071p"]
 [ext_resource type="Resource" uid="uid://dnw4gyb7lngl5" path="res://resources/stats/slimeStats.tres" id="3_k071p"]
 
 [resource]
 script = ExtResource("1_6pnpc")
 _stats = ExtResource("3_k071p")
-_attacks = Array[ExtResource("1_pssbi")]([ExtResource("2_k071p")])
+_attacks = [ExtResource("2_k071p")]
 Character_name = "Slime"
 metadata/_custom_type_script = "uid://ds508ydwkmj35"
