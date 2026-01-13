@@ -1,7 +1,7 @@
 extends Control
 class_name ActionControl
 
-signal action_decided(att: PlayerAttack)
+signal action_decided(att: PlayerAnimatedAttack)
 
 @onready var base_actions: VBoxContainer = $BaseAction
 @onready var specific_actions: VBoxContainer = $SpecificAction
@@ -17,14 +17,14 @@ var _spec_index: int
  # array for resources of base attacks, stored in the same order as the children nodes
 var _base_ch: Array
  # array for resources of specific attacks, stored in the same order as the children nodes
-var _spec_ch: Array
+var _spec_ch: Array[Attack]
 var _base_count: int 
 var _spec_count: int
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	_base_ch = base_actions.get_children()
+	_base_ch = base_actions.get_children().filter(func(e): return e is ActionOption)
 	_base_count = _base_ch.size()
 	_base_ch[0].setSelected()
 	
@@ -75,7 +75,7 @@ func _process(_delta: float) -> void:
 			
 			
 ## Sets the current attacks avaliable for the player
-func setAttacks(attacks: Array[PlayerAttack]):
+func setAttacks(attacks: Array[PlayerAnimatedAttack]):
 	#clears spefific actions
 	for c in specific_actions.get_children():
 		specific_actions.remove_child(c)
@@ -84,7 +84,7 @@ func setAttacks(attacks: Array[PlayerAttack]):
 	for att in attacks:
 		var n: ActionOption = optionScene.instantiate()
 		specific_actions.add_child(n)	
-		n.load_data(att.option)
+		n.load_data(att.attack.option)
 		_spec_ch.append(Attack.new(n, att))
 		
 	_spec_count = _spec_ch.size()
@@ -93,7 +93,7 @@ func setAttacks(attacks: Array[PlayerAttack]):
 		
 class Attack:
 	var node: ActionOption
-	var res: PlayerAttack
-	func _init(n: ActionOption, r: PlayerAttack) -> void:
+	var res: PlayerAnimatedAttack
+	func _init(n: ActionOption, r: PlayerAnimatedAttack) -> void:
 		node = n
 		res = r

@@ -19,7 +19,7 @@ var cur_character: CharacterNode
 var cur_character_pos: Vector2
 
 ## the attack being used by a player
-var player_attack: PlayerAttack
+var player_attack: PlayerAnimatedAttack
 
 ## The attack being used by an enemy
 var enemy_attack: EnemyAttackDTO
@@ -144,9 +144,9 @@ func process_fight():
 			_adjustPosition(ac)
 			camera.add_child(ac)
 			ac.setAttacks(cur_character.characterResource().attacks())
-			ac.action_decided.connect(func(att: PlayerAttack): player_attack=att)
+			ac.action_decided.connect(func(att: PlayerAnimatedAttack): player_attack=att)
 			await ac.action_decided
-			print("Attack: ", player_attack.Name)
+			print("Attack: ", player_attack.attack.Name)
 		
 		#select the target
 		if cur_character is SlimeNode:
@@ -209,11 +209,11 @@ func _return_to_original_pos(node: CharacterNode):
 
 # fires the chosen attack from the current character to the target, then assigns the fields to null
 func _fire() -> void:	
-	var dmg: int = player_attack.Damage if player_attack != null else enemy_attack.Damage
+	var dmg: int = player_attack.attack.Damage if player_attack != null else enemy_attack.Damage
 	target.ch.characterResource().stats().CurHealth -= dmg
 	
 	print("Attack (", 
-	player_attack.Name if cur_character.is_in_group("players") else "???",
+	player_attack.attack.Name if cur_character.is_in_group("players") else "???",
 	") has been fired from ", cur_character.characterResource().Character_name, " to ", target.ch.characterResource().Character_name)
 
 	

@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://u0iqskh05rc6"]
+
+[ext_resource type="PackedScene" uid="uid://6timmj68hnxr" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://c62mxyh4fctwm" path="res://scripts/game.gd" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://di3ndunm3hgad" path="res://scenes/fight_camera.tscn" id="2_iywne"]
+[ext_resource type="Texture2D" uid="uid://b7j6vx6rimb2u" path="res://assets/sprites/backgroundPlains.png" id="2_p57ef"]
+[ext_resource type="PackedScene" uid="uid://dakj23hmickya" path="res://scenes/slime.tscn" id="4_iywne"]
+[ext_resource type="Resource" uid="uid://ojiijbw5dq6d" path="res://resources/enemies/slime.tres" id="4_p57ef"]
+[ext_resource type="Resource" uid="uid://ff5e88i702fq" path="res://resources/players/Player2.tres" id="5_u5sy4"]
+
+[node name="Fight" type="Node2D"]
+script = ExtResource("1_yqjtg")
+
+[node name="Background" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.9607843)
+position = Vector2(0.75, -0.24998474)
+scale = Vector2(1.4717621, 1.4031252)
+texture = ExtResource("2_p57ef")
+
+[node name="FightCamera" parent="." instance=ExtResource("2_iywne")]
+
+[node name="Characters" type="Node" parent="."]
+
+[node name="Players" type="Node" parent="Characters"]
+
+[node name="Player" parent="Characters/Players" instance=ExtResource("1_uwrxv")]
+position = Vector2(-418, 286)
+scale = Vector2(4, 4)
+
+[node name="Player2" parent="Characters/Players" instance=ExtResource("1_uwrxv")]
+position = Vector2(-320, 68)
+scale = Vector2(4, 4)
+frame_progress = 0.0
+_player = ExtResource("5_u5sy4")
+
+[node name="Enemies" type="Node" parent="Characters"]
+
+[node name="Slime2" parent="Characters/Enemies" instance=ExtResource("4_iywne")]
+position = Vector2(327, 122)
+scale = Vector2(4, 4)
+enemy = ExtResource("4_p57ef")
+
+[node name="Slime3" parent="Characters/Enemies" instance=ExtResource("4_iywne")]
+position = Vector2(451, 364)
+scale = Vector2(4, 4)
+enemy = ExtResource("4_p57ef")

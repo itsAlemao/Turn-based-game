@@ -36,14 +36,15 @@ animations = [{
 "texture": SubResource("AtlasTexture_qlg0r")
 }],
 "loop": true,
-"name": &"default",
+"name": &"Idle",
 "speed": 7.0
 }]
 
 [node name="Player" type="AnimatedSprite2D" groups=["players"]]
 sprite_frames = SubResource("SpriteFrames_g2els")
-autoplay = "default"
-frame = 1
-frame_progress = 0.41651425
+animation = &"Idle"
+autoplay = "Idle"
+frame = 3
+frame_progress = 0.6704118
 script = ExtResource("1_g2els")
 _player = ExtResource("3_qhqgy")

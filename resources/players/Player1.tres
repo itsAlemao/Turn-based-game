@@ -1,14 +1,13 @@
-[gd_resource type="Resource" script_class="Player" load_steps=6 format=3 uid="uid://li73vb8hor3o"]
+[gd_resource type="Resource" script_class="Player" load_steps=5 format=3 uid="uid://li73vb8hor3o"]
 
-[ext_resource type="Script" uid="uid://bpumciuhrg8sm" path="res://scripts/models/PlayerAttackDTO.gd" id="1_03t6l"]
-[ext_resource type="Resource" uid="uid://dituchk0e3l5p" path="res://resources/attacks/PAttack1.tres" id="2_40h6t"]
+[ext_resource type="Script" uid="uid://by341h66a8k4h" path="res://scripts/models/PlayerAnimatedAttack.gd" id="1_03t6l"]
+[ext_resource type="Resource" uid="uid://dm5m3sxo8f0qr" path="res://resources/animated_attacks/p1_att1.tres" id="2_40h6t"]
 [ext_resource type="Script" uid="uid://b86bis6q5d4v6" path="res://scripts/models/playerDTO.gd" id="3_03t6l"]
 [ext_resource type="Resource" uid="uid://dmyv0ipnhnb8r" path="res://resources/stats/Stats1.tres" id="3_40h6t"]
-[ext_resource type="Resource" uid="uid://dgcdkwpxqvxx1" path="res://resources/attacks/PAttack2.tres" id="3_j6kel"]
 
 [resource]
 script = ExtResource("3_03t6l")
-Attacks = Array[ExtResource("1_03t6l")]([ExtResource("2_40h6t"), ExtResource("3_j6kel")])
+Attacks = Array[ExtResource("1_03t6l")]([ExtResource("2_40h6t")])
 Stats = ExtResource("3_40h6t")
 Character_name = "Gino"
 metadata/_custom_type_script = "uid://b86bis6q5d4v6"

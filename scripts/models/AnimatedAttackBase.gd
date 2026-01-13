@@ -3,25 +3,45 @@ class_name AnimatedAttackBase
 extends Resource
 
 
-@export var ranged_attack: bool = true:
+@export var characterAnimation: SpriteFrames
+@export var hitFrame: int
+# toggles on and off the ranged related fields
+var rangedIsRanged: bool = false:
 	set(value):
-		ranged_attack = value
-		# This tells the editor to refresh the Inspector layout
+		rangedIsRanged = value
 		notify_property_list_changed()
-		
-# Frame where animation hits
-@export var hit_frame: int
 
-# We do NOT use @export here, because we handle it manually below
-var bullet_animation: SpriteFrames
+var rangedProjectileAnimation: SpriteFrames
+var rangedStartingFrame: int
 
 func _get_property_list() -> Array:
-	var properties = []
-	# Only add the bullet_animation property if ranged_attack is true
-	if ranged_attack:
-		properties.append({
-			"name": "propName",
-			"type": PROPERTY_USAGE
+	var arr: Array = []
+
+	arr.append({
+		"name": "Ranged",
+		"type": TYPE_NIL,
+		"usage": PROPERTY_USAGE_GROUP,
+		"hint_string": "ranged"
+	})
+
+	arr.append({
+		"name": "rangedIsRanged",
+		"type": TYPE_BOOL,
+		"usage": PROPERTY_USAGE_DEFAULT,
+	})
+
+	if rangedIsRanged:
+		arr.append({
+			"name": "rangedProjectileAnimation",
+			"type": TYPE_OBJECT,
+			"hint": PROPERTY_HINT_RESOURCE_TYPE,
+			"hint_string": "SpriteFrames",
+			"usage": PROPERTY_USAGE_DEFAULT,
 		})
-	
-	return properties
+		arr.append({
+			"name": "rangedStartingFrame",
+			"type": TYPE_INT,
+			"usage": PROPERTY_USAGE_DEFAULT,
+		})
+
+	return arr
