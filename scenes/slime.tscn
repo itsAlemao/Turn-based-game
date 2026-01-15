@@ -32,9 +32,11 @@ animations = [{
 "speed": 7.0
 }]
 
-[node name="Slime" type="AnimatedSprite2D" groups=["enemies"]]
+[node name="Node2D" type="Node2D"]
+script = ExtResource("2_p2gj0")
+
+[node name="Slime" type="AnimatedSprite2D" parent="." groups=["enemies"]]
 sprite_frames = SubResource("SpriteFrames_ighys")
 animation = &"Idle"
 autoplay = "Idle"
 frame_progress = 0.4050188
-script = ExtResource("2_p2gj0")

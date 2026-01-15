@@ -92,9 +92,6 @@ func _process(_delta: float) -> void:
 # Moves the selection of the target up and down, can be used for players and enemies
 func _change_target(dir: Direction):
 	var direction: int = 1 if dir == Direction.DOWN else -1
-	
-	
-	
 	var arr = e_pos if cur_character is PlayerNode else p_pos
 	var idx: int = target.spacial_idx
 	var next_target: ChPos
@@ -208,7 +205,11 @@ func _return_to_original_pos(node: CharacterNode):
 	t.tween_property(node, "position", cur_character_pos, 0.5)
 
 # fires the chosen attack from the current character to the target, then assigns the fields to null
-func _fire() -> void:	
+func _fire() -> void:
+
+	if player_attack != null:
+		(cur_character as PlayerNode).change_animation(player_attack.attack.Name)
+
 	var dmg: int = player_attack.attack.Damage if player_attack != null else enemy_attack.Damage
 	target.ch.characterResource().stats().CurHealth -= dmg
 	

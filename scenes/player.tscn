@@ -1,16 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://6timmj68hnxr"]
+[gd_scene load_steps=21 format=3 uid="uid://6timmj68hnxr"]
 
 [ext_resource type="Texture2D" uid="uid://qgae6fh21jft" path="res://assets/sprites/pg walking.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://duqux6jf37gol" path="res://scripts/models/player.gd" id="1_g2els"]
 [ext_resource type="Resource" uid="uid://li73vb8hor3o" path="res://resources/players/Player1.tres" id="3_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://dbkfypivecd4h" path="res://assets/sprites/pgAnimationsGrid.png" id="4_dqkch"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
 atlas = ExtResource("1_4flbx")
 region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
-atlas = ExtResource("1_4flbx")
-region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
 atlas = ExtResource("1_4flbx")
@@ -20,6 +17,14 @@ region = Rect2(64, 0, 32, 32)
 atlas = ExtResource("1_4flbx")
 region = Rect2(96, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
+atlas = ExtResource("1_4flbx")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
+atlas = ExtResource("4_dqkch")
+region = Rect2(0, 64, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_g2els"]
 animations = [{
 "frames": [{
@@ -27,24 +32,163 @@ animations = [{
 "texture": SubResource("AtlasTexture_g2els")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qhqgy")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_dqkch")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qlg0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhqgy")
 }],
 "loop": true,
 "name": &"Idle",
 "speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuyoq")
+}],
+"loop": true,
+"name": &"anim2",
+"speed": 5.0
 }]
 
-[node name="Player" type="AnimatedSprite2D" groups=["players"]]
-sprite_frames = SubResource("SpriteFrames_g2els")
+[sub_resource type="Animation" id="Animation_fjrip"]
+resource_name = "Idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+
+[sub_resource type="Animation" id="Animation_smehm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+
+[sub_resource type="Animation" id="Animation_dqkch"]
+resource_name = "anim2"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"anim2"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ur7pv"]
+_data = {
+&"Idle": SubResource("Animation_fjrip"),
+&"RESET": SubResource("Animation_smehm"),
+&"anim2": SubResource("Animation_dqkch")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dqkch"]
 animation = &"Idle"
-autoplay = "Idle"
-frame = 3
-frame_progress = 0.6704118
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qlg0r"]
+animation = &"anim2"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tuyoq"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fjrip"]
+advance_mode = 2
+advance_expression = "attacking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_smehm"]
+advance_mode = 2
+advance_expression = "!attacking || true"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_3v2ag"]
+states/End/position = Vector2(875, 122)
+states/Idle/node = SubResource("AnimationNodeAnimation_dqkch")
+states/Idle/position = Vector2(341.9553, 122)
+states/Start/position = Vector2(188, 122)
+states/other/node = SubResource("AnimationNodeAnimation_qlg0r")
+states/other/position = Vector2(552.9553, 122)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_tuyoq"), "Idle", "other", SubResource("AnimationNodeStateMachineTransition_fjrip"), "other", "Idle", SubResource("AnimationNodeStateMachineTransition_smehm")]
+graph_offset = Vector2(-218.04471, -18)
+
+[node name="Node2D" type="Node2D"]
 script = ExtResource("1_g2els")
 _player = ExtResource("3_qhqgy")
+
+[node name="Player" type="AnimatedSprite2D" parent="." groups=["players"]]
+sprite_frames = SubResource("SpriteFrames_g2els")
+animation = &"anim2"
+frame_progress = 0.28755572
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+active = false
+libraries = {
+&"": SubResource("AnimationLibrary_ur7pv")
+}
+autoplay = "Idle"
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+active = false
+tree_root = SubResource("AnimationNodeStateMachine_3v2ag")
+anim_player = NodePath("../AnimationPlayer")
