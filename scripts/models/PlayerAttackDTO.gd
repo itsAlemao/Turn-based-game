@@ -18,5 +18,11 @@ var option: AttackOption:
 		res.name = Name
 		res.type = ActionOption.Type.DO_SOMETHING
 		return res
+	
+	
+func ch_anim_name() -> String:
+	return Name + "_ch"
 
-#func getOption() -> AttackOption:
+func proj_anim_name() -> String:
+	return Name + "_proj"
+	

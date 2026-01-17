@@ -23,6 +23,7 @@ func create_animation(frames: SpriteFrames, anim_name: String = frames.get_anima
 
 	# Populate keys from SpriteFrames
 	var frame_count = frames.get_frame_count(anim_name)
+	print("frame_count: ", frame_count)
 	var duration_per_frame = 1.0 / fps
 	for i in range(frame_count):
 		var time = i * duration_per_frame

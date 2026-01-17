@@ -1,68 +1,70 @@
-[gd_resource type="Resource" script_class="PlayerAnimatedAttack" load_steps=20 format=3 uid="uid://dm5m3sxo8f0qr"]
+[gd_resource type="Resource" script_class="PlayerAnimatedAttack" load_steps=19 format=3 uid="uid://dm5m3sxo8f0qr"]
 
 [ext_resource type="Resource" uid="uid://dituchk0e3l5p" path="res://resources/attacks/PAttack1.tres" id="1_v2v6s"]
 [ext_resource type="Script" uid="uid://by341h66a8k4h" path="res://scripts/models/PlayerAnimatedAttack.gd" id="1_xl7ge"]
 [ext_resource type="Texture2D" uid="uid://dbkfypivecd4h" path="res://assets/sprites/pgAnimationsGrid.png" id="2_im8a1"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xulhu"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2v6s"]
 atlas = ExtResource("2_im8a1")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qoigg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_im8a1"]
 atlas = ExtResource("2_im8a1")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_54ol5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xulhu"]
 atlas = ExtResource("2_im8a1")
 region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qe4xb"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qoigg"]
 atlas = ExtResource("2_im8a1")
 region = Rect2(160, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4x0or"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_54ol5"]
 atlas = ExtResource("2_im8a1")
 region = Rect2(192, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nui5q"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qe4xb"]
 atlas = ExtResource("2_im8a1")
 region = Rect2(0, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_j882t"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4x0or"]
 atlas = ExtResource("2_im8a1")
 region = Rect2(32, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tvd5r"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_nui5q"]
 atlas = ExtResource("2_im8a1")
 region = Rect2(64, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c0uuy"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_j882t"]
 atlas = ExtResource("2_im8a1")
 region = Rect2(96, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vh2p8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_tvd5r"]
 atlas = ExtResource("2_im8a1")
 region = Rect2(128, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8jhr8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0uuy"]
 atlas = ExtResource("2_im8a1")
 region = Rect2(0, 64, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bcdto"]
-atlas = ExtResource("2_im8a1")
-region = Rect2(0, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x78mq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_vh2p8"]
 atlas = ExtResource("2_im8a1")
 region = Rect2(32, 96, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qpvcv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jhr8"]
 atlas = ExtResource("2_im8a1")
 region = Rect2(64, 96, 32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_xbg3f"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_bkqsx"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2v6s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_im8a1")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xulhu")
 }, {
@@ -95,29 +97,20 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8jhr8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bcdto")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x78mq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qpvcv")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
-"speed": 7.0
+"speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_wnfxk"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_v2v6s"]
 
 [resource]
 script = ExtResource("1_xl7ge")
 attack = ExtResource("1_v2v6s")
-characterAnimation = SubResource("SpriteFrames_xbg3f")
-hitFrame = 5
+characterAnimation = SubResource("SpriteFrames_bkqsx")
+hitFrame = 8
 rangedIsRanged = true
-rangedProjectileAnimation = SubResource("SpriteFrames_wnfxk")
+rangedProjectileAnimation = SubResource("SpriteFrames_v2v6s")
 rangedStartingFrame = 1
 metadata/_custom_type_script = "uid://by341h66a8k4h"
