@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://navar8hrtux8"
-path="res://.godot/imported/pgShoot-Sheet.png-d55ba3fa3e0d9faa150b8b03328ec93f.ctex"
+uid="uid://b7o8jc5bfwse7"
+path="res://.godot/imported/pgShootProjectile.png-1f902d2167306d27745d2bc262e2cf1a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/pgShoot-Sheet.png"
-dest_files=["res://.godot/imported/pgShoot-Sheet.png-d55ba3fa3e0d9faa150b8b03328ec93f.ctex"]
+source_file="res://assets/sprites/pgShootProjectile.png"
+dest_files=["res://.godot/imported/pgShootProjectile.png-1f902d2167306d27745d2bc262e2cf1a.ctex"]
 
 [params]
 
