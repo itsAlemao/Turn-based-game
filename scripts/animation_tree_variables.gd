@@ -35,10 +35,10 @@ func do_attack(att: PlayerAnimatedAttack, target_pos: Vector2) -> void:
 
 
 func _get_attack_ch_node() -> AnimationNodeAnimation:
-	return get("tree_root").get_node("Attack").get_node("Character") 
+	return get("tree_root").get_node("Attack").get_node("Character")
 	
 func _get_attack_proj_node() -> AnimationNodeAnimation:
-	return get("tree_root").get_node("Attack").get_node("Projectile")  
+	return get("tree_root").get_node("Attack").get_node("Projectile")
 	
 func _travel_to_attack() -> void:
 	# var attack_blend_tree: AnimationNodeBlendTree = get("tree_root").get_node("Attack")
@@ -46,10 +46,7 @@ func _travel_to_attack() -> void:
 	playback.travel("Attack")
 	print("attacking i think...")
 	
-func _customize_projectile_anim(target_pos:Vector2, seconds: float = PROJECTILE_TRAVEL_TIME_SEC) -> void:
+func _customize_projectile_anim(target_pos: Vector2, seconds: float = PROJECTILE_TRAVEL_TIME_SEC) -> void:
 	var player_anim: Animation = get_node(anim_player).player_anim.get_animation("Attack - Shooting")
 	var idx = player_anim.find_track("Projectile:position", Animation.TYPE_VALUE)
 	player_anim.track_set_key_value(idx, 1, target_pos)
-
-	
-	
