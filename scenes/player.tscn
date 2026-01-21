@@ -1,10 +1,9 @@
-[gd_scene load_steps=86 format=3 uid="uid://6timmj68hnxr"]
+[gd_scene load_steps=61 format=3 uid="uid://6timmj68hnxr"]
 
 [ext_resource type="Texture2D" uid="uid://qgae6fh21jft" path="res://assets/sprites/pg walking.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://duqux6jf37gol" path="res://scripts/models/player.gd" id="1_g2els"]
 [ext_resource type="Resource" uid="uid://li73vb8hor3o" path="res://resources/players/Player1.tres" id="3_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://dbkfypivecd4h" path="res://assets/sprites/pgAnimationsGrid.png" id="4_dqkch"]
-[ext_resource type="Script" uid="uid://bnn504ikr807t" path="res://scripts/animation_tree_variables.gd" id="5_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://b7o8jc5bfwse7" path="res://assets/sprites/pgShootProjectile.png" id="6_tuyoq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fjrip"]
@@ -156,112 +155,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_a8ls1"]
-animation = &"Attack - Projectile collided"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_y4r1p"]
-animation = &"Attack - Charging"
-
-[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_qfm1y"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fulsm"]
-animation = &"Attack - Projectile movement "
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tuyoq"]
-animation = &"Attack - Shooting"
-
-[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_fjrip"]
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_smehm"]
-graph_offset = Vector2(-579.6546, 57.172745)
-nodes/Animation/node = SubResource("AnimationNodeAnimation_tuyoq")
-nodes/Animation/position = Vector2(-460, 140)
-nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_fjrip")
-nodes/TimeScale/position = Vector2(-220, 360)
-nodes/Add2/node = SubResource("AnimationNodeAdd2_qfm1y")
-nodes/Add2/position = Vector2(20, 160)
-"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_fulsm")
-"nodes/Animation 2/position" = Vector2(-540, 360)
-node_connections = [&"output", 0, &"Add2", &"TimeScale", 0, &"Animation 2", &"Add2", 0, &"Animation", &"Add2", 1, &"TimeScale"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3v2ag"]
-animation = &"Attack - ToCharge"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f1ej7"]
-animation = &"Attack - ToIdle"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jej6c"]
-animation = &"Attack - ToShoot"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f1ej7"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oprun"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qfm1y"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fulsm"]
-advance_mode = 2
-advance_expression = "_should_end_charging"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a8ls1"]
-switch_mode = 2
-advance_mode = 0
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4r5pv"]
-switch_mode = 2
-advance_mode = 0
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_smehm"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ur7pv"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_4r5pv"]
-"states/Attack - Projectile collided/node" = SubResource("AnimationNodeAnimation_a8ls1")
-"states/Attack - Projectile collided/position" = Vector2(1045.9119, 232)
-states/Charging/node = SubResource("AnimationNodeAnimation_y4r1p")
-states/Charging/position = Vector2(553, 100)
-states/End/position = Vector2(1518, 100)
-states/Shooting/node = SubResource("AnimationNodeBlendTree_smehm")
-states/Shooting/position = Vector2(949, 100)
-states/ToCharge/node = SubResource("AnimationNodeAnimation_3v2ag")
-states/ToCharge/position = Vector2(336, 100)
-states/ToIdle/node = SubResource("AnimationNodeAnimation_f1ej7")
-states/ToIdle/position = Vector2(1142, 100)
-states/ToShoot/node = SubResource("AnimationNodeAnimation_jej6c")
-states/ToShoot/position = Vector2(765, 100)
-transitions = ["Start", "ToCharge", SubResource("AnimationNodeStateMachineTransition_f1ej7"), "ToShoot", "Shooting", SubResource("AnimationNodeStateMachineTransition_oprun"), "ToCharge", "Charging", SubResource("AnimationNodeStateMachineTransition_qfm1y"), "Charging", "ToShoot", SubResource("AnimationNodeStateMachineTransition_fulsm"), "Shooting", "ToIdle", SubResource("AnimationNodeStateMachineTransition_a8ls1"), "ToIdle", "End", SubResource("AnimationNodeStateMachineTransition_4r5pv"), "Shooting", "Attack - Projectile collided", SubResource("AnimationNodeStateMachineTransition_smehm"), "Attack - Projectile collided", "ToIdle", SubResource("AnimationNodeStateMachineTransition_ur7pv")]
-graph_offset = Vector2(75.911896, 41)
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ur7pv"]
-animation = &"Idle"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qlg0r"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tuyoq"]
-advance_mode = 0
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fjrip"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_y4r1p"]
-states/Attack/node = SubResource("AnimationNodeStateMachine_4r5pv")
-states/Attack/position = Vector2(410, 190)
-states/Idle/node = SubResource("AnimationNodeAnimation_ur7pv")
-states/Idle/position = Vector2(410, 100)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_qlg0r"), "Start", "Attack", SubResource("AnimationNodeStateMachineTransition_tuyoq"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_fjrip")]
-graph_offset = Vector2(-117, 9)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_ur7pv"]
 atlas = ExtResource("6_tuyoq")
 region = Rect2(0, 0, 32, 32)
@@ -406,10 +299,25 @@ tracks/3/path = NodePath("Projectile:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.19854538, 2.0333333),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(-0.033333335, 0, 0.19854538, 2.0333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [true, false]
+"values": [false, false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_a38lo"]
+resource_name = "Idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayers/CharacterAnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Idle"),
+"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="Animation" id="Animation_i4ail"]
@@ -436,22 +344,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_a38lo"]
-resource_name = "Idle"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "animation"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayers/CharacterAnimationPlayer")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"clips": PackedStringArray("Idle"),
-"times": PackedFloat32Array(0)
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i4ail"]
@@ -471,12 +364,10 @@ animation = &"Idle"
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d2wvv"]
-switch_mode = 1
-advance_mode = 2
-advance_expression = "attacking"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3v2ag"]
 switch_mode = 2
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_l71n6"]
 states/Attack/node = SubResource("AnimationNodeAnimation_4ni07")
@@ -486,6 +377,35 @@ states/Idle/node = SubResource("AnimationNodeAnimation_fjrip")
 states/Idle/position = Vector2(467, 60)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_y4r1p"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_d2wvv"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_3v2ag")]
 graph_offset = Vector2(-78, 7)
+
+[sub_resource type="Animation" id="Animation_4r5pv"]
+resource_name = "Projectile - Collide"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Projectile:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Impact"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Projectile:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
 
 [sub_resource type="Animation" id="Animation_smehm"]
 resource_name = "Projectile"
@@ -514,33 +434,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [0, 1, 2]
-}
-
-[sub_resource type="Animation" id="Animation_a8ls1"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Projectile:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"Create"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Projectile:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_qfm1y"]
@@ -573,10 +466,8 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3]
 }
 
-[sub_resource type="Animation" id="Animation_4r5pv"]
-resource_name = "Projectile - Collide"
-length = 0.4
-step = 0.1
+[sub_resource type="Animation" id="Animation_a8ls1"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -587,7 +478,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"Impact"]
+"values": [&"Create"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -596,10 +487,10 @@ tracks/1/path = NodePath("Projectile:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0, 1, 2, 3]
+"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fulsm"]
@@ -800,34 +691,29 @@ _data = {
 }
 
 [node name="Node2D" type="Node2D"]
-position = Vector2(30, 26)
 script = ExtResource("1_g2els")
 _player = ExtResource("3_qhqgy")
 
 [node name="Player" type="AnimatedSprite2D" parent="." groups=["players"]]
 sprite_frames = SubResource("SpriteFrames_g2els")
 animation = &"Idle"
-frame = 3
-
-[node name="PlayerAnimTree" type="AnimationTree" parent="."]
-active = false
-tree_root = SubResource("AnimationNodeStateMachine_y4r1p")
-anim_player = NodePath("../AnimationPlayers/CharacterAnimationPlayer")
-parameters/Attack/Shooting/TimeScale/scale = 1.0
-parameters/Attack/Shooting/Add2/add_amount = 0.0
-script = ExtResource("5_qlg0r")
+frame = 1
 
 [node name="Projectile" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(19, 0)
+scale = Vector2(1.3, 1.3)
 sprite_frames = SubResource("SpriteFrames_jej6c")
 animation = &"Create"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+active = false
 libraries = {
 &"": SubResource("AnimationLibrary_i4ail")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+active = false
 tree_root = SubResource("AnimationNodeStateMachine_l71n6")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")

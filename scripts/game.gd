@@ -163,7 +163,7 @@ func process_fight():
 		print("Target selcted, prepare for firing...")
 		await get_tree().create_timer(1.5).timeout	
 		
-		_fire()
+		await _fire()
 		await get_tree().create_timer(0.5).timeout
 		_return_to_original_pos(cur_character)
 		await get_tree().create_timer(0.5).timeout
@@ -206,10 +206,13 @@ func _return_to_original_pos(node: CharacterNode):
 
 # fires the chosen attack from the current character to the target, then assigns the fields to null
 func _fire() -> void:
-
+	
 	if player_attack != null:
-		(cur_character as PlayerNode).change_animation(player_attack.attack.Name)
-
+		var pl: PlayerNode = cur_character
+		pl.customize_attack(cur_character.to_local(target.pos))
+		pl.do_attack()
+		await get_tree().create_timer(5.0).timeout
+		
 	var dmg: int = player_attack.attack.Damage if player_attack != null else enemy_attack.Damage
 	target.ch.characterResource().stats().CurHealth -= dmg
 	
@@ -217,7 +220,6 @@ func _fire() -> void:
 	player_attack.attack.Name if cur_character.is_in_group("players") else "???",
 	") has been fired from ", cur_character.characterResource().Character_name, " to ", target.ch.characterResource().Character_name)
 
-	
 # adjusts the position of the action menu
 func _adjustPosition(node: ActionControl):
 	node.position.x = -614.0
